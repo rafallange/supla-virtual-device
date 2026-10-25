@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")"  || exit 1
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -10,7 +10,7 @@ NC='\033[0m'
 echo "Getting the sources."
 
 if [ ! -d src ]; then
-  git clone https://github.com/lukbek/supla-core.git -q --single-branch --branch supla-mqtt-dev src >/dev/null || exit 1
+  git clone https://github.com/rafallange/supla-core.git -q --single-branch --branch supla-mqtt-dev src || exit 1
 fi
 
 (cd src && git pull >/dev/null && cd ..) || exit 1
